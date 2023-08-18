@@ -1,0 +1,111 @@
+:root {
+  --background: #323437;
+  --text: #ffffff;
+  --key: #252729;
+  --border: #000000;
+
+  --button: #252729;
+  --button-hover: #ffffff;
+  --button-hover-text: #000000;
+  --container: #252729;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: var(--background);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+#textInput {
+  width: 95%;
+  font-size: 15px;
+  text-align: center;
+  margin-bottom: 10px;
+  border: none;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+#textInput::placeholder {
+  color: var(--text);
+}
+
+#keyboard {
+  display: grid;
+  gap: 5px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  /* border: 1px solid #ccc; */
+  border-radius: 5px;
+}
+
+.key-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.key {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: var(--key);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* .key:hover {
+  background-color: var(--text);
+  color: var(--border);
+} */
+
+.key:active {
+  background-color: var(--text);
+  color: var(--border);
+}
+
+.key.pressed {
+  background-color: var(--text);
+  color: var(--border);
+}
+
+.backspace {
+  width: 100px;
+}
+
+.tab {
+  width: 75px;
+}
+
+.capslock {
+  width: 85px;
+}
+
+.enter {
+  width: 120px;
+}
+
+.shift {
+  width: 130px;
+}
+
+.space {
+  width: 430px;
+}
