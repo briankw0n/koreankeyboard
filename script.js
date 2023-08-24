@@ -1,5 +1,6 @@
 const keys = document.querySelectorAll('.key.register');
 const textInput = document.getElementById('textInput');
+const copyButton = document.getElementById('copyButton');
 const shiftKey = document.querySelector('.key.shift');
 const capsLockKey = document.querySelector('.key.capslock');
 
@@ -200,7 +201,9 @@ document.addEventListener('keydown', event => {
 
         if (koreanCharacter) {
           textInput.value += koreanCharacter;
-        }
+          let parsed = Hangul.disassemble(textInput.value);
+          textInput.value = Hangul.assemble(parsed);
+        }        
       }
     } else {
       console.log('Key pressed:', keyText);
@@ -216,4 +219,14 @@ document.addEventListener('keyup', event => {
   if (keyElement) {
     keyElement.classList.remove('pressed');
   }
+});
+
+copyButton.addEventListener('click', () => {
+  textInput.select();
+  document.execCommand('copy');
+  window.getSelection().removeAllRanges();
+  copyButton.textContent = 'Copied!';
+  setTimeout(() => {
+    copyButton.textContent = 'Copy Text';
+  }, 1500);
 });
