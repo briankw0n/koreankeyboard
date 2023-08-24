@@ -230,3 +230,15 @@ copyButton.addEventListener('click', () => {
     copyButton.textContent = 'Copy Text';
   }, 1500);
 });
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    if (isKoreanMode) {
+      updateEnglishKeyboardLayout();
+      isKoreanMode = false;
+    } else {
+      updateKoreanKeyboardLayout();
+      isKoreanMode = true;
+    }
+  }
+});
