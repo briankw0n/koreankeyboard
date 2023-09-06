@@ -186,7 +186,17 @@ document.addEventListener('keydown', event => {
   const restrictedKeys = ['Tab', 'CapsLock', 'Enter', 'Shift', 'Fn', 'Control', 'Meta', 'Alt'];
 
   if (keyText === 'Backspace') {
-    textInput.value = textInput.value.slice(0, -1);
+    // event.preventDefault();
+    if (isKoreanMode) {
+      let inputText = textInput.value;
+      if (inputText.length > 0) {
+        let parsed = Hangul.disassemble(inputText);
+        parsed.pop();
+        textInput.value = Hangul.assemble(parsed);
+      }
+    } else {
+      textInput.value = textInput.value.slice(0, -1);
+    }
   } else if (keyText === ' ') {
     textInput.value += ' ';
   } else if (!restrictedKeys.includes(keyText)) {
